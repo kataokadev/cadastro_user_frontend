@@ -41,3 +41,5 @@ Usei esse projeto para poder praticar esses conceitos, por isso caso acha algum 
 - API REST
 - Integração frontend ↔ backend
 - Spring Boot com banco de dados em memória
+
+- Basta Acessar meu Portfolio para entrar no Projeto.
