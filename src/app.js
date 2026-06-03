@@ -2,7 +2,7 @@
 //  CONFIGURAÇÃO — altere a URL base aqui
 //  quando for conectar ao backend
 // =============================================
-const BASE_URL = "cadastro-usuario-production.up.railway.app";
+const BASE_URL = "http://cadastro-usuario-production.up.railway.app";
 const ENDPOINT = `${BASE_URL}/users`;
 
 document.getElementById("baseUrlDisplay").textContent = BASE_URL;
