@@ -6,7 +6,10 @@
     <title>Usuários — Painel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles/modern-normalize.css" />
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/utils.css" />
@@ -16,9 +19,7 @@
     <script src="./src/app.js" defer></script>
   </head>
   <body>
-
     <div class="layout">
-
       <!-- SIDEBAR / FORM -->
       <aside class="sidebar">
         <div class="brand">
@@ -28,25 +29,48 @@
 
         <div class="form-section">
           <h2 class="form-section__title" id="formTitle">Novo Usuário</h2>
-          <p class="form-section__sub" id="formSub">Preencha os campos para cadastrar</p>
+          <p class="form-section__sub" id="formSub">
+            Preencha os campos para cadastrar
+          </p>
 
           <input type="hidden" id="editId" />
 
           <div class="field">
             <label class="field__label" for="nome">Nome</label>
-            <input class="field__input" type="text" id="nome" placeholder="Ex: João Silva" maxlength="50" />
+            <input
+              class="field__input"
+              type="text"
+              id="nome"
+              placeholder="Ex: João Silva"
+              maxlength="50"
+            />
           </div>
 
           <div class="field">
             <label class="field__label" for="email">E-mail</label>
-            <input class="field__input" type="email" id="email" placeholder="Ex: joao@email.com" maxlength="255" />
+            <input
+              class="field__input"
+              type="email"
+              id="email"
+              placeholder="Ex: joao@email.com"
+              maxlength="255"
+            />
           </div>
 
           <div class="form-actions">
-            <button class="btn btn--primary" id="btnSalvar" onclick="salvarUsuario()">
+            <button
+              class="btn btn--primary"
+              id="btnSalvar"
+              onclick="salvarUsuario()"
+            >
               <span class="btn__icon">+</span> Salvar
             </button>
-            <button class="btn btn--ghost" id="btnCancelar" onclick="cancelarEdicao()" style="display:none">
+            <button
+              class="btn btn--ghost"
+              id="btnCancelar"
+              onclick="cancelarEdicao()"
+              style="display: none"
+            >
               Cancelar
             </button>
           </div>
@@ -54,17 +78,21 @@
 
         <div class="sidebar__footer">
           <span>Base URL:</span>
-          <code id="baseUrlDisplay">http://localhost:8080</code>
+          <code id="baseUrlDisplay"
+            >https://cadastro-usuario-production.up.railway.app</code
+          >
         </div>
       </aside>
 
       <!-- MAIN PANEL -->
       <main class="main">
-
         <div class="topbar">
           <div class="topbar__left">
             <h1 class="topbar__title">Gerenciar Usuários</h1>
-            <span class="topbar__sub">Busque um usuário pelo ID para visualizar, editar ou remover</span>
+            <span class="topbar__sub"
+              >Busque um usuário pelo ID para visualizar, editar ou
+              remover</span
+            >
           </div>
         </div>
 
@@ -72,28 +100,45 @@
         <div class="search-box">
           <div class="search-wrap">
             <span class="search-wrap__icon">⌕</span>
-            <input class="search-wrap__input" type="number" id="searchId" placeholder="Digite o ID do usuário..." min="1" />
-            <button class="btn btn--primary" onclick="buscarUsuario()">Buscar</button>
-            <button class="btn btn--ghost" onclick="limparResultado()">Limpar</button>
+            <input
+              class="search-wrap__input"
+              type="number"
+              id="searchId"
+              placeholder="Digite o ID do usuário..."
+              min="1"
+            />
+            <button class="btn btn--primary" onclick="buscarUsuario()">
+              Buscar
+            </button>
+            <button class="btn btn--ghost" onclick="limparResultado()">
+              Limpar
+            </button>
           </div>
         </div>
 
         <!-- RESULTADO -->
         <div class="result-area" id="resultArea">
-
           <div class="empty-state" id="emptyState">
             <div class="empty-state__icon">◎</div>
             <p class="empty-state__text">Nenhuma busca realizada</p>
-            <p class="empty-state__sub">Use o campo acima para encontrar um usuário pelo ID</p>
+            <p class="empty-state__sub">
+              Use o campo acima para encontrar um usuário pelo ID
+            </p>
           </div>
 
-          <div class="empty-state empty-state--notfound" id="notFoundState" style="display:none">
+          <div
+            class="empty-state empty-state--notfound"
+            id="notFoundState"
+            style="display: none"
+          >
             <div class="empty-state__icon">✕</div>
             <p class="empty-state__text">Usuário não encontrado</p>
-            <p class="empty-state__sub">Nenhum usuário com esse ID está cadastrado</p>
+            <p class="empty-state__sub">
+              Nenhum usuário com esse ID está cadastrado
+            </p>
           </div>
 
-          <div class="user-card" id="userCard" style="display:none">
+          <div class="user-card" id="userCard" style="display: none">
             <div class="user-card__header">
               <div class="user-avatar" id="userAvatar">??</div>
               <div class="user-card__info">
@@ -103,13 +148,15 @@
               </div>
             </div>
             <div class="user-card__actions">
-              <button class="btn btn--ghost" onclick="preencherForm()">✎ Editar</button>
-              <button class="btn btn--danger-outline" onclick="abrirModal()">✕ Remover</button>
+              <button class="btn btn--ghost" onclick="preencherForm()">
+                ✎ Editar
+              </button>
+              <button class="btn btn--danger-outline" onclick="abrirModal()">
+                ✕ Remover
+              </button>
             </div>
           </div>
-
         </div>
-
       </main>
     </div>
 
@@ -123,13 +170,19 @@
     <div class="overlay" id="overlay">
       <div class="modal">
         <p class="modal__title">Confirmar exclusão</p>
-        <p class="modal__msg">Tem certeza que deseja remover este usuário? Esta ação não pode ser desfeita.</p>
+        <p class="modal__msg">
+          Tem certeza que deseja remover este usuário? Esta ação não pode ser
+          desfeita.
+        </p>
         <div class="modal__actions">
-          <button class="btn btn--ghost" onclick="fecharModal()">Cancelar</button>
-          <button class="btn btn--danger" onclick="deletarUsuario()">Remover</button>
+          <button class="btn btn--ghost" onclick="fecharModal()">
+            Cancelar
+          </button>
+          <button class="btn btn--danger" onclick="deletarUsuario()">
+            Remover
+          </button>
         </div>
       </div>
     </div>
-
   </body>
 </html>
