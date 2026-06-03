@@ -9,7 +9,9 @@ Através do **frontend**, é possível realizar requisições HTTP para:
 - **GET** – Listar usuários  
 - **POST** – Cadastrar novos usuários  
 - **PUT** – Atualizar usuários existentes  
-- **DELETE** – Remover usuários  
+- **DELETE** – Remover usuários
+
+- Dica: o Id é auto incrementado, começando no 1, pense nisso na hora que fizer as requisições GET
 
 ## Tecnologias Utilizadas
 
