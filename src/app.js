@@ -2,7 +2,7 @@
 //  CONFIGURAÇÃO — altere a URL base aqui
 //  quando for conectar ao backend
 // =============================================
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "cadastro-usuario-production.up.railway.app";
 const ENDPOINT = `${BASE_URL}/users`;
 
 document.getElementById("baseUrlDisplay").textContent = BASE_URL;
@@ -49,7 +49,10 @@ async function buscarUsuario() {
     usuarioAtual = await res.json();
     mostrarCard(usuarioAtual);
   } catch (err) {
-    mostrarToast("Não foi possível conectar à API. Verifique se está rodando.", "error");
+    mostrarToast(
+      "Não foi possível conectar à API. Verifique se está rodando.",
+      "error",
+    );
   }
 }
 
@@ -58,8 +61,8 @@ async function buscarUsuario() {
 //  POST /users  |  PUT /users?id={id}
 // =============================================
 async function salvarUsuario() {
-  const id    = document.getElementById("editId").value;
-  const nome  = document.getElementById("nome").value.trim();
+  const id = document.getElementById("editId").value;
+  const nome = document.getElementById("nome").value.trim();
   const email = document.getElementById("email").value.trim();
 
   if (!nome) {
@@ -91,7 +94,6 @@ async function salvarUsuario() {
       cancelarEdicao();
       document.getElementById("searchId").value = id;
       await buscarUsuario();
-
     } else {
       // CRIAR — POST /users
       const res = await fetch(ENDPOINT, {
@@ -142,9 +144,9 @@ function mostrarCard(usuario) {
   esconderEstados();
 
   document.getElementById("userCard").style.display = "flex";
-  document.getElementById("cardNome").textContent   = usuario.nome  || "—";
-  document.getElementById("cardEmail").textContent  = usuario.email || "—";
-  document.getElementById("cardId").textContent     = `ID: ${usuario.id}`;
+  document.getElementById("cardNome").textContent = usuario.nome || "—";
+  document.getElementById("cardEmail").textContent = usuario.email || "—";
+  document.getElementById("cardId").textContent = `ID: ${usuario.id}`;
 
   const iniciais = (usuario.nome || "??")
     .split(" ")
@@ -160,16 +162,16 @@ function mostrarNotFound() {
 }
 
 function esconderEstados() {
-  document.getElementById("emptyState").style.display    = "none";
+  document.getElementById("emptyState").style.display = "none";
   document.getElementById("notFoundState").style.display = "none";
-  document.getElementById("userCard").style.display      = "none";
+  document.getElementById("userCard").style.display = "none";
 }
 
 function limparResultado() {
   usuarioAtual = null;
-  document.getElementById("emptyState").style.display    = "flex";
+  document.getElementById("emptyState").style.display = "flex";
   document.getElementById("notFoundState").style.display = "none";
-  document.getElementById("userCard").style.display      = "none";
+  document.getElementById("userCard").style.display = "none";
   cancelarEdicao();
 }
 
@@ -179,16 +181,19 @@ function limparResultado() {
 function preencherForm() {
   if (!usuarioAtual) return;
 
-  document.getElementById("editId").value  = usuarioAtual.id;
-  document.getElementById("nome").value    = usuarioAtual.nome  || "";
-  document.getElementById("email").value   = usuarioAtual.email || "";
+  document.getElementById("editId").value = usuarioAtual.id;
+  document.getElementById("nome").value = usuarioAtual.nome || "";
+  document.getElementById("email").value = usuarioAtual.email || "";
 
-  document.getElementById("formTitle").textContent      = "Editar Usuário";
-  document.getElementById("formSub").textContent        = `ID: ${usuarioAtual.id}`;
-  document.getElementById("btnSalvar").innerHTML        = '<span class="btn__icon">✎</span> Atualizar';
-  document.getElementById("btnCancelar").style.display  = "inline-flex";
+  document.getElementById("formTitle").textContent = "Editar Usuário";
+  document.getElementById("formSub").textContent = `ID: ${usuarioAtual.id}`;
+  document.getElementById("btnSalvar").innerHTML =
+    '<span class="btn__icon">✎</span> Atualizar';
+  document.getElementById("btnCancelar").style.display = "inline-flex";
 
-  document.getElementById("nome").scrollIntoView({ behavior: "smooth", block: "center" });
+  document
+    .getElementById("nome")
+    .scrollIntoView({ behavior: "smooth", block: "center" });
   document.getElementById("nome").focus();
 }
 
@@ -197,14 +202,16 @@ function cancelarEdicao() {
 }
 
 function limparForm() {
-  document.getElementById("editId").value  = "";
-  document.getElementById("nome").value    = "";
-  document.getElementById("email").value   = "";
+  document.getElementById("editId").value = "";
+  document.getElementById("nome").value = "";
+  document.getElementById("email").value = "";
 
-  document.getElementById("formTitle").textContent      = "Novo Usuário";
-  document.getElementById("formSub").textContent        = "Preencha os campos para cadastrar";
-  document.getElementById("btnSalvar").innerHTML        = '<span class="btn__icon">+</span> Salvar';
-  document.getElementById("btnCancelar").style.display  = "none";
+  document.getElementById("formTitle").textContent = "Novo Usuário";
+  document.getElementById("formSub").textContent =
+    "Preencha os campos para cadastrar";
+  document.getElementById("btnSalvar").innerHTML =
+    '<span class="btn__icon">+</span> Salvar';
+  document.getElementById("btnCancelar").style.display = "none";
 }
 
 // =============================================
