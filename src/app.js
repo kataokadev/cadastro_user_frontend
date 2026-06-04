@@ -19,7 +19,7 @@ async function buscarUsuario() {
   const id = document.getElementById("searchId").value.trim();
 
   if (!id) {
-    mostrarToast("Digite um ID para buscar.", "error");
+    mostrarToast("Enter an ID to search.", "error");
     return;
   }
 
@@ -36,7 +36,7 @@ async function buscarUsuario() {
     mostrarCard(usuarioAtual);
   } catch (err) {
     mostrarToast(
-      "Não foi possível conectar à API. Verifique se está rodando.",
+      "Unable to connect to the API. Please check if it is running.",
       "error",
     );
   }
@@ -48,13 +48,13 @@ async function salvarUsuario() {
   const email = document.getElementById("email").value.trim();
 
   if (!nome) {
-    mostrarToast("O campo Nome é obrigatório.", "error");
+    mostrarToast("The Name field is required.", "error");
     document.getElementById("nome").focus();
     return;
   }
 
   if (!email) {
-    mostrarToast("O campo E-mail é obrigatório.", "error");
+    mostrarToast("The Email field is required.", "error");
     document.getElementById("email").focus();
     return;
   }
@@ -71,7 +71,7 @@ async function salvarUsuario() {
 
       if (!res.ok) throw new Error(`Erro ${res.status}`);
 
-      mostrarToast("Usuário atualizado com sucesso!", "success");
+      mostrarToast("User updated successfully!", "success");
       cancelarEdicao();
       document.getElementById("searchId").value = id;
       await buscarUsuario();
@@ -84,11 +84,11 @@ async function salvarUsuario() {
 
       if (!res.ok) throw new Error(`Erro ${res.status}`);
 
-      mostrarToast("Usuário cadastrado com sucesso!", "success");
+      mostrarToast("User registered successfully!", "success");
       limparForm();
     }
   } catch (err) {
-    mostrarToast("Erro ao salvar usuário. Verifique a API.", "error");
+    mostrarToast("Error saving user. Please check the API..", "error");
   }
 }
 
@@ -102,13 +102,13 @@ async function deletarUsuario() {
 
     if (!res.ok) throw new Error(`Erro ${res.status}`);
 
-    mostrarToast("Usuário removido.", "success");
+    mostrarToast("User removed.", "success");
     fecharModal();
     usuarioAtual = null;
     limparResultado();
     document.getElementById("searchId").value = "";
   } catch (err) {
-    mostrarToast("Erro ao remover usuário.", "error");
+    mostrarToast("Error removing user.", "error");
     fecharModal();
   }
 }
@@ -120,7 +120,7 @@ function mostrarCard(usuario) {
   esconderEstados();
 
   document.getElementById("userCard").style.display = "flex";
-  document.getElementById("cardNome").textContent = usuario.nome || "—";
+  document.getElementById("cardName").textContent = usuario.nome || "—";
   document.getElementById("cardEmail").textContent = usuario.email || "—";
   document.getElementById("cardId").textContent = `ID: ${usuario.id}`;
 
@@ -158,16 +158,16 @@ function preencherForm() {
   document.getElementById("nome").value = usuarioAtual.nome || "";
   document.getElementById("email").value = usuarioAtual.email || "";
 
-  document.getElementById("formTitle").textContent = "Editar Usuário";
+  document.getElementById("formTitle").textContent = "Edit User";
   document.getElementById("formSub").textContent = `ID: ${usuarioAtual.id}`;
   document.getElementById("btnSalvar").innerHTML =
-    '<span class="btn__icon">✎</span> Atualizar';
+    '<span class="btn__icon">✎</span> Update';
   document.getElementById("btnCancelar").style.display = "inline-flex";
 
   document
-    .getElementById("nome")
+    .getElementById("name")
     .scrollIntoView({ behavior: "smooth", block: "center" });
-  document.getElementById("nome").focus();
+  document.getElementById("name").focus();
 }
 
 function cancelarEdicao() {
@@ -179,11 +179,11 @@ function limparForm() {
   document.getElementById("nome").value = "";
   document.getElementById("email").value = "";
 
-  document.getElementById("formTitle").textContent = "Novo Usuário";
+  document.getElementById("formTitle").textContent = "New User";
   document.getElementById("formSub").textContent =
-    "Preencha os campos para cadastrar";
+    "Fill in the fields to register";
   document.getElementById("btnSalvar").innerHTML =
-    '<span class="btn__icon">+</span> Salvar';
+    '<span class="btn__icon">+</span> Save';
   document.getElementById("btnCancelar").style.display = "none";
 }
 
