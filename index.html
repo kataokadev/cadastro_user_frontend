@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Users — Dashboard</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./styles/components/sidebar.css" />
     <link rel="stylesheet" href="./styles/components/main.css" />
     <link rel="stylesheet" href="./styles/components/popups.css" />
+    <title>Users — Dashboard</title>
     <script src="./src/app.js" defer></script>
   </head>
   <body>
@@ -70,7 +71,7 @@
               onclick="cancelarEdicao()"
               style="display: none"
             >
-              Cancelar
+              Cancel
             </button>
           </div>
         </div>
@@ -104,10 +105,10 @@
               min="1"
             />
             <button class="btn btn--primary" onclick="buscarUsuario()">
-              Buscar
+              Search
             </button>
             <button class="btn btn--ghost" onclick="limparResultado()">
-              Limpar
+              Clear
             </button>
           </div>
         </div>
@@ -152,13 +153,11 @@
       </main>
     </div>
 
-    <!-- TOAST -->
     <div class="toast" id="toast">
       <span class="toast__bar"></span>
       <span class="toast__msg" id="toastMsg"></span>
     </div>
 
-    <!-- MODAL DELETE -->
     <div class="overlay" id="overlay">
       <div class="modal">
         <p class="modal__title">Confirm deletion</p>

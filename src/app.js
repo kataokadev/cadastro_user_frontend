@@ -113,9 +113,6 @@ async function deletarUsuario() {
   }
 }
 
-// =============================================
-//  UI — MOSTRAR CARD
-// =============================================
 function mostrarCard(usuario) {
   esconderEstados();
 
