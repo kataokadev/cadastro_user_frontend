@@ -1,20 +1,10 @@
-// =============================================
-//  CONFIGURAÇÃO — altere a URL base aqui
-//  quando for conectar ao backend
-// =============================================
 const BASE_URL = "https://cadastro-usuario-production.up.railway.app";
 const ENDPOINT = `${BASE_URL}/users`;
 
 document.getElementById("baseUrlDisplay").textContent = BASE_URL;
 
-// =============================================
-//  ESTADO
-// =============================================
 let usuarioAtual = null;
 
-// =============================================
-//  INICIALIZAÇÃO
-// =============================================
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("searchId").addEventListener("keydown", (e) => {
     if (e.key === "Enter") buscarUsuario();
@@ -25,10 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// =============================================
-//  FETCH — BUSCAR POR ID
-//  GET /users?id={id}
-// =============================================
 async function buscarUsuario() {
   const id = document.getElementById("searchId").value.trim();
 
@@ -56,10 +42,6 @@ async function buscarUsuario() {
   }
 }
 
-// =============================================
-//  FETCH — SALVAR (criar ou atualizar)
-//  POST /users  |  PUT /users?id={id}
-// =============================================
 async function salvarUsuario() {
   const id = document.getElementById("editId").value;
   const nome = document.getElementById("nome").value.trim();
@@ -81,7 +63,6 @@ async function salvarUsuario() {
 
   try {
     if (id) {
-      // ATUALIZAR — PUT /users?id={id}
       const res = await fetch(`${ENDPOINT}?id=${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -95,7 +76,6 @@ async function salvarUsuario() {
       document.getElementById("searchId").value = id;
       await buscarUsuario();
     } else {
-      // CRIAR — POST /users
       const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -112,10 +92,6 @@ async function salvarUsuario() {
   }
 }
 
-// =============================================
-//  FETCH — DELETAR
-//  DELETE /users?id={id}
-// =============================================
 async function deletarUsuario() {
   if (!usuarioAtual) return;
 
@@ -175,9 +151,6 @@ function limparResultado() {
   cancelarEdicao();
 }
 
-// =============================================
-//  UI — FORM EDIÇÃO
-// =============================================
 function preencherForm() {
   if (!usuarioAtual) return;
 
@@ -214,9 +187,6 @@ function limparForm() {
   document.getElementById("btnCancelar").style.display = "none";
 }
 
-// =============================================
-//  UI — MODAL
-// =============================================
 function abrirModal() {
   document.getElementById("overlay").classList.add("visible");
 }
@@ -225,9 +195,6 @@ function fecharModal() {
   document.getElementById("overlay").classList.remove("visible");
 }
 
-// =============================================
-//  UI — TOAST
-// =============================================
 function mostrarToast(msg, tipo = "info") {
   const toast = document.getElementById("toast");
   document.getElementById("toastMsg").textContent = msg;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Usuários — Painel</title>
+    <title>Users — Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,19 +23,19 @@
       <aside class="sidebar">
         <div class="brand">
           <span class="brand__dot"></span>
-          <span class="brand__name">Usuários <span>API</span></span>
+          <span class="brand__name">Users <span>API</span></span>
         </div>
 
         <div class="form-section">
-          <h2 class="form-section__title" id="formTitle">Novo Usuário</h2>
+          <h2 class="form-section__title" id="formTitle">New User</h2>
           <p class="form-section__sub" id="formSub">
-            Preencha os campos para cadastrar
+            Fill in the fields to register
           </p>
 
           <input type="hidden" id="editId" />
 
           <div class="field">
-            <label class="field__label" for="nome">Nome</label>
+            <label class="field__label" for="nome">Name</label>
             <input
               class="field__input"
               type="text"
@@ -62,7 +62,7 @@
               id="btnSalvar"
               onclick="salvarUsuario()"
             >
-              <span class="btn__icon">+</span> Salvar
+              <span class="btn__icon">+</span> Save
             </button>
             <button
               class="btn btn--ghost"
@@ -86,10 +86,9 @@
       <main class="main">
         <div class="topbar">
           <div class="topbar__left">
-            <h1 class="topbar__title">Gerenciar Usuários</h1>
+            <h1 class="topbar__title">Manage Users</h1>
             <span class="topbar__sub"
-              >Busque um usuário pelo ID para visualizar, editar ou
-              remover</span
+              >Search for a user by ID to view, edit, or delete</span
             >
           </div>
         </div>
@@ -115,9 +114,9 @@
 
         <div class="result-area" id="resultArea">
           <div class="empty-state" id="emptyState">
-            <p class="empty-state__text">Nenhuma busca realizada</p>
+            <p class="empty-state__text">No search performed</p>
             <p class="empty-state__sub">
-              Use o campo acima para encontrar um usuário pelo ID
+              Use the field above to find a user by ID
             </p>
           </div>
 
@@ -127,10 +126,8 @@
             style="display: none"
           >
             <div class="empty-state__icon">✕</div>
-            <p class="empty-state__text">Usuário não encontrado</p>
-            <p class="empty-state__sub">
-              Nenhum usuário com esse ID está cadastrado
-            </p>
+            <p class="empty-state__text">User not found</p>
+            <p class="empty-state__sub">No user with this ID is registered</p>
           </div>
 
           <div class="user-card" id="userCard" style="display: none">
@@ -144,10 +141,10 @@
             </div>
             <div class="user-card__actions">
               <button class="btn btn--ghost" onclick="preencherForm()">
-                ✎ Editar
+                ✎ Edit
               </button>
               <button class="btn btn--danger-outline" onclick="abrirModal()">
-                ✕ Remover
+                ✕ Remove
               </button>
             </div>
           </div>
@@ -164,17 +161,15 @@
     <!-- MODAL DELETE -->
     <div class="overlay" id="overlay">
       <div class="modal">
-        <p class="modal__title">Confirmar exclusão</p>
+        <p class="modal__title">Confirm deletion</p>
         <p class="modal__msg">
-          Tem certeza que deseja remover este usuário? Esta ação não pode ser
-          desfeita.
+          Are you sure you want to remove this user? This action cannot be
+          undone.
         </p>
         <div class="modal__actions">
-          <button class="btn btn--ghost" onclick="fecharModal()">
-            Cancelar
-          </button>
+          <button class="btn btn--ghost" onclick="fecharModal()">Cancel</button>
           <button class="btn btn--danger" onclick="deletarUsuario()">
-            Remover
+            Remove
           </button>
         </div>
       </div>
