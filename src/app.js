@@ -24,8 +24,10 @@ async function buscarUsuario() {
   }
 
   try {
-    const res = await fetch(`${ENDPOINT}?id=${id}`);
-    cache: "no-store";
+    const res = await fetch(`${ENDPOINT}?id=${id}`, {
+      cache: "no-store",
+    });
+
     if (res.status === 404 || res.status === 500 || !res.ok) {
       usuarioAtual = null;
       mostrarNotFound();
@@ -35,6 +37,7 @@ async function buscarUsuario() {
     usuarioAtual = await res.json();
     mostrarCard(usuarioAtual);
   } catch (err) {
+    console.log("Error: " + err);
     mostrarToast(
       "Unable to connect to the API. Please check if it is running.",
       "error",
@@ -115,7 +118,6 @@ async function deletarUsuario() {
 
 function mostrarCard(usuario) {
   esconderEstados();
-  console.log(usuario);
 
   document.getElementById("userCard").style.display = "flex";
   document.getElementById("cardName").textContent = usuario.nome || "—";
