@@ -115,6 +115,7 @@ async function deletarUsuario() {
 
 function mostrarCard(usuario) {
   esconderEstados();
+  console.log(usuario);
 
   document.getElementById("userCard").style.display = "flex";
   document.getElementById("cardName").textContent = usuario.nome || "—";
