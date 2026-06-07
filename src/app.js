@@ -25,7 +25,7 @@ async function buscarUsuario() {
 
   try {
     const res = await fetch(`${ENDPOINT}?id=${id}`);
-
+    cache: "no-store";
     if (res.status === 404 || res.status === 500 || !res.ok) {
       usuarioAtual = null;
       mostrarNotFound();
